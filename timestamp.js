@@ -1,5 +1,5 @@
-var moment = require("moment")
-var time = function(time){
+var moment = require('moment')
+ var timestamp = timesta(time){
     var patt = /^[0-9]*$/g;
     var isNum = patt.test(time);
     // console.log(isNum);
@@ -27,4 +27,4 @@ var time = function(time){
         }
     }
 }
-module.exports = time;
+module.exports = timestamp;
