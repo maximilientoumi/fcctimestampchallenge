@@ -37,6 +37,17 @@ app.route('/')
     .get(function(req, res) {
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
+app.route('/:input')
+.get(function(req, res) {
+  var time = req.params.input;
+  var patt = /^[0-9]*$/g;
+  var isNum = patt.test(time);
+  if(isNum){
+  
+  
+  
+  }
+})
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
