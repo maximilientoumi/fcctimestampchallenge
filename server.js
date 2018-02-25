@@ -7,8 +7,8 @@
 
 var fs = require('fs');
 var express = require('express');
-var moment = require('moment');
 var app = express();
+var timestamp = require('./timestamp.js')
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -38,19 +38,9 @@ app.route('/')
     .get(function(req, res) {
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
-app.route('/:input')
-.get(function(req, res) {
-  var time = req.params.input;
-  var patt = /^[0-9]*$/g;
-  var isNum = patt.test(time);
-  if(isNum){
-     var date = moment.unix(time);
-        var data = {
-            unix: time,
-            natural : date.format('MMMM DD YYYY')
-        }
-        res.json(data);
-  }
+app.route('/:input').get(function(req, res){
+  var date  = req.params.input;
+  res.json(timestamp(date));
 })
 
 // Respond not found to all the wrong routes
