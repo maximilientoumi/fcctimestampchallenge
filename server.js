@@ -7,6 +7,7 @@
 
 var fs = require('fs');
 var express = require('express');
+var moment = require('moment');
 var app = express();
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -43,9 +44,12 @@ app.route('/:input')
   var patt = /^[0-9]*$/g;
   var isNum = patt.test(time);
   if(isNum){
-  
-  
-  
+     var date = moment.unix(time);
+        var data = {
+            unix: time,
+            natural : date.format('MMMM DD YYYY')
+        }
+        res.json(data);
   }
 })
 
