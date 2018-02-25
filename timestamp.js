@@ -1,5 +1,5 @@
 var moment = require('moment')
- var timestamp = timesta(time){
+ var timestamp = function(time){
     var patt = /^[0-9]*$/g;
     var isNum = patt.test(time);
     // console.log(isNum);
